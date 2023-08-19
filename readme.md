@@ -9,7 +9,8 @@
   <a href="https://gitpod.io/#https://github.com/Aircoookie/WLED"><img src="https://img.shields.io/badge/Gitpod-ready--to--code-blue?style=flat-square&logo=gitpod"></a>
 
   </p>
-# Willkommen bei meinem Projekt German WLED! ✨
+
+### Willkommen bei meinem Projekt German WLED! ✨
 
 ## ✌️ Sonstiges
 
@@ -22,6 +23,7 @@ Treten Sie dem Discord-Server bei, um alles rund um WLED zu besprechen!
 
 Schauen Sie sich das WLED-[Discourse-Forum](https://wled.discourse.group) an!  
 
+$
 
 *Haftungsausschluss:*
 
