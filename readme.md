@@ -9,76 +9,75 @@
   <a href="https://gitpod.io/#https://github.com/Aircoookie/WLED"><img src="https://img.shields.io/badge/Gitpod-ready--to--code-blue?style=flat-square&logo=gitpod"></a>
 
   </p>
+# Willkommen bei meinem Projekt WLED! ✨
 
-# Welcome to my project WLED! ✨
+Eine schnelle und funktionsreiche Implementierung eines ESP8266/ESP32-Webservers zur Steuerung von NeoPixel (WS2812B, WS2811, SK6812) LEDs sowie auch von SPI-basierten Chipsätzen wie den WS2801 und APA102!
 
-A fast and feature-rich implementation of an ESP8266/ESP32 webserver to control NeoPixel (WS2812B, WS2811, SK6812) LEDs or also SPI based chipsets like the WS2801 and APA102!
+## ⚙️ Funktionen
+- WS2812FX-Bibliothek mit über 100 Spezialeffekten  
+- FastLED-Rauscheffekte und 50 Paletten  
+- Moderne Benutzeroberfläche mit Farb-, Effekt- und Segmentsteuerungen  
+- Segmente zur Zuweisung verschiedener Effekte und Farben für benutzerdefinierte Teile der LED-Kette  
+- Einstellungsseite - Konfiguration über das Netzwerk  
+- Zugriffspunkt- und Stationsmodus - automatischer Failsafe-Zugriffspunkt  
+- Bis zu 10 LED-Ausgänge pro Instanz  
+- Unterstützung für RGBW-Streifen  
+- Bis zu 250 Benutzer-Voreinstellungen, um Farben/Effekte einfach zu speichern und zu laden, unterstützt das Durchschalten von ihnen  
+- Voreinstellungen können verwendet werden, um API-Aufrufe automatisch auszuführen  
+- Nachtlichtfunktion (allmähliches Abdunkeln)  
+- Volle OTA-Softwareaktualisierbarkeit (HTTP + ArduinoOTA), passwortgeschützt  
+- Konfigurierbare Analoguhr (Cronixie, 7-Segment und EleksTube IPS-Uhrunterstützung über Benutzermodifikationen) 
+- Konfigurierbare automatische Helligkeitsbegrenzung für sicheren Betrieb  
+- Konfiguration über Dateisystem für einfachere Sicherung von Voreinstellungen und Einstellungen  
 
-## ⚙️ Features
-- WS2812FX library with more than 100 special effects  
-- FastLED noise effects and 50 palettes  
-- Modern UI with color, effect and segment controls  
-- Segments to set different effects and colors to user defined parts of the LED string  
-- Settings page - configuration via the network  
-- Access Point and station mode - automatic failsafe AP  
-- Up to 10 LED outputs per instance
-- Support for RGBW strips  
-- Up to 250 user presets to save and load colors/effects easily, supports cycling through them.  
-- Presets can be used to automatically execute API calls  
-- Nightlight function (gradually dims down)  
-- Full OTA software updatability (HTTP + ArduinoOTA), password protectable  
-- Configurable analog clock (Cronixie, 7-segment and EleksTube IPS clock support via usermods) 
-- Configurable Auto Brightness limit for safe operation  
-- Filesystem-based config for easier backup of presets and settings  
-
-## 💡 Supported light control interfaces
-- WLED app for [Android](https://play.google.com/store/apps/details?id=com.aircoookie.WLED) and [iOS](https://apps.apple.com/us/app/wled/id1475695033)
-- JSON and HTTP request APIs  
+## 💡 Unterstützte Lichtsteuerungsschnittstellen
+- WLED-App für [Android](https://play.google.com/store/apps/details?id=com.aircoookie.WLED) und [iOS](https://apps.apple.com/de/app/wled/id1475695033)
+- JSON- und HTTP-Anfrage-APIs  
 - MQTT   
-- E1.31, Art-Net, DDP and TPM2.net
-- [diyHue](https://github.com/diyhue/diyHue) (Wled is supported by diyHue, including Hue Sync Entertainment under udp. Thanks to [Gregory Mallios](https://github.com/gmallios))
+- E1.31, Art-Net, DDP und TPM2.net
+- [diyHue](https://github.com/diyhue/diyHue) (WLED wird von diyHue unterstützt, einschließlich Hue Sync Entertainment über UDP. Dank an [Gregory Mallios](https://github.com/gmallios))
 - [Hyperion](https://github.com/hyperion-project/hyperion.ng)
-- UDP realtime  
-- Alexa voice control (including dimming and color)  
-- Sync to Philips hue lights  
-- Adalight (PC ambilight via serial) and TPM2  
-- Sync color of multiple WLED devices (UDP notifier)  
-- Infrared remotes (24-key RGB, receiver required)  
-- Simple timers/schedules (time from NTP, timezones/DST supported)  
+- Echtzeit-UDP  
+- Alexa-Sprachsteuerung (einschließlich Dimmen und Farbsteuerung)  
+- Synchronisation mit Philips Hue-Lampen  
+- Adalight (PC-Ambilight über serielle Verbindung) und TPM2  
+- Farbsynchronisation mehrerer WLED-Geräte (UDP-Benachrichtigungsdienst)  
+- Infrarot-Fernbedienungen (24-Tasten-RGB, Empfänger erforderlich)  
+- Einfache Timer/Zeitpläne (Zeit von NTP, Zeitzonen/DST unterstützt)  
 
-## 📲 Quick start guide and documentation
+## 📲 Schnellstartanleitung und Dokumentation
 
-See the [documentation on our official site](https://kno.wled.ge)!
+Siehe die [Dokumentation auf unserer offiziellen Website](https://kno.wled.ge)!
 
-[On this page](https://kno.wled.ge/basics/tutorials/) you can find excellent tutorials and tools to help you get your new project up and running!
+[Auf dieser Seite](https://kno.wled.ge/basics/tutorials/) finden Sie ausgezeichnete Anleitungen und Tools, die Ihnen helfen, Ihr neues Projekt in Betrieb zu nehmen!
 
-## 🖼️ User interface
+## 🖼️ Benutzeroberfläche
 <img src="/images/macbook-pro-space-gray-on-the-wooden-table.jpg" width="50%"><img src="/images/walking-with-iphone-x.jpg" width="50%">
 
-## 💾 Compatible hardware
+## 💾 Kompatibles Hardware
 
-See [here](https://kno.wled.ge/basics/compatible-hardware)!
+Siehe [hier](https://kno.wled.ge/basics/compatible-hardware)!
 
-## ✌️ Other
+## ✌️ Sonstiges
 
-Licensed under the MIT license  
-Credits [here](https://kno.wled.ge/about/contributors/)!
+Lizenziert unter der MIT-Lizenz  
+Credits [hier](https://kno.wled.ge/about/contributors/)!
 
-Join the Discord server to discuss everything about WLED!
+Treten Sie dem Discord-Server bei, um alles rund um WLED zu besprechen!
 
 <a href="https://discord.gg/KuqP7NE"><img src="https://discordapp.com/api/guilds/473448917040758787/widget.png?style=banner2" width="25%"></a>
 
-Check out the WLED [Discourse forum](https://wled.discourse.group)!  
+Schauen Sie sich das WLED-[Discourse-Forum](https://wled.discourse.group) an!  
 
-You can also send me mails to [dev.aircoookie@gmail.com](mailto:dev.aircoookie@gmail.com), but please, only do so if you want to talk to me privately.  
+Sie können mir auch E-Mails senden an [dev.aircoookie@gmail.com](mailto:dev.aircoookie@gmail.com), aber bitte nur, wenn Sie privat mit mir sprechen möchten.  
 
-If WLED really brightens up your day, you can [![](https://img.shields.io/badge/send%20me%20a%20small%20gift-paypal-blue.svg?style=flat-square)](https://paypal.me/aircoookie)
+Wenn WLED Ihren Tag wirklich aufhellt, können Sie mir [![](https://img.shields.io/badge/send%20me%20a%20small%20gift-paypal-blue.svg?style=flat-square)](https://paypal.me/aircoookie) eine kleine Spende über PayPal zukommen lassen.
 
+*Haftungsausschluss:*
 
-*Disclaimer:*   
+Wenn Sie anfällig für photosensitive Epilepsie sind, empfehlen wir Ihnen, diese Software **nicht** zu verwenden.  
+Wenn Sie es dennoch ausprobieren möchten, verwenden Sie keine Stroboskop-, Beleuchtungs- oder Geräuschmodi oder hohe Effektgeschwindigkeitseinstellungen.
 
-If you are prone to photosensitive epilepsy, we recommended you do **not** use this software.  
-If you still want to try, don't use strobe, lighting or noise modes or high effect speed settings.
+Gemäß der MIT-Lizenz übernehme ich keine Haftung für Schäden an Ihnen oder anderen Personen oder Geräten.
 
-As per the MIT license, I assume no liability for any damage to you or any other person or equipment.  
 
