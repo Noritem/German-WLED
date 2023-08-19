@@ -14,22 +14,14 @@
 
 ## ✌️ Sonstiges
 
-Lizenziert unter der MIT-Lizenz  
 Credits [hier](https://kno.wled.ge/about/contributors/)!
+
+## Discord Und Lizenze
+
+Lizenziert unter der MIT-Lizenz  
 
 Treten Sie dem Discord-Server bei, um alles rund um WLED zu besprechen!
 
 <a href="https://discord.gg/KuqP7NE"><img src="https://discordapp.com/api/guilds/473448917040758787/widget.png?style=banner2" width="25%"></a>
 
 Schauen Sie sich das WLED-[Discourse-Forum](https://wled.discourse.group) an!  
-
-$
-
-*Haftungsausschluss:*
-
-Wenn Sie anfällig für photosensitive Epilepsie sind, empfehlen wir Ihnen, diese Software **nicht** zu verwenden.  
-Wenn Sie es dennoch ausprobieren möchten, verwenden Sie keine Stroboskop-, Beleuchtungs- oder Geräuschmodi oder hohe Effektgeschwindigkeitseinstellungen.
-
-Gemäß der MIT-Lizenz übernehme ich keine Haftung für Schäden an Ihnen oder anderen Personen oder Geräten.
-
-
