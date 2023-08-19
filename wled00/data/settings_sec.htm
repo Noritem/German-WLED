@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=500">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+	<meta charset="utf-8">
+	<title>Sonstige Einstellungen</title>
+	<script>
+		var d = document;
+		var loc = false, locip, locproto = "http:";
+		function H() { window.open("https://kno.wled.ge/features/settings/#security-settings"); }
+		function B() { window.open(getURL("/settings"),"_self"); }
+		function U() { window.open(getURL("/update"),"_self"); }
+		function gId(s) { return d.getElementById(s); }
+		function isObj(o) { return (o && typeof o === 'object' && !Array.isArray(o)); }
+		// https://www.educative.io/edpresso/how-to-dynamically-load-a-js-file-in-javascript
+		function loadJS(FILE_URL, async = true) {
+			let scE = d.createElement("script");
+			scE.setAttribute("src", FILE_URL);
+			scE.setAttribute("type", "text/javascript");
+			scE.setAttribute("async", async);
+			d.body.appendChild(scE);
+			// success event 
+			scE.addEventListener("load", () => {
+				//console.log("File loaded");
+				GetV();
+				setBckFilename(gId("bckcfg"));
+				setBckFilename(gId("bckpresets"));
+			});
+			// error event
+			scE.addEventListener("error", (ev) => {
+				console.log("Error on loading file", ev);
+				alert("Loading of configuration script failed.\nIncomplete page data!");
+			});
+		}
+		var timeout;
+		function showToast(text, error = false)
+		{
+			var x = gId("toast");
+			x.innerHTML = text;
+			x.classList.add(error ? "error":"show");
+			clearTimeout(timeout);
+			x.style.animation = 'none';
+			timeout = setTimeout(function(){ x.classList.remove("show"); }, 2900);
+		}
+		function uploadFile(fO,name) {
+			var req = new XMLHttpRequest();
+			req.addEventListener('load', function(){showToast(this.responseText,this.status >= 400)});
+			req.addEventListener('error', function(e){showToast(e.stack,true);});
+			req.open("POST", getURL("/upload"));
+			var formData = new FormData();
+			formData.append("data", fO.files[0], name);
+			req.send(formData);
+			fO.value = '';
+			return false;
+		}
+		function checkNum(o) {
+			const specialkeys = ["Backspace", "Tab", "Enter", "Shift", "Control", "Alt", "Pause", "CapsLock", "Escape", "Space", "PageUp", "PageDown", "End", "Home", "ArrowLeft", "ArrowUp", "ArrowRight", "ArrowDown", "Insert", "Delete"];
+			// true if key is a number or a special key
+			if(event.key.match(/[0-9]/) || specialkeys.includes(event.key)) return true;
+			event.preventDefault();
+			return false;
+		}
+		function setBckFilename(x) {
+			x.setAttribute("download","wled_" + x.getAttribute("download") + (sd=="WLED"?"":("_" +sd)));
+		}
+		function S() {
+			let l = window.location;
+			if (l.protocol == "file:") {
+				loc = true;
+				locip = localStorage.getItem('locIp');
+				if (!locip) {
+					locip = prompt("Dateimodus. Bitte geben Sie Ihre WLED IP ein!");
+					localStorage.setItem('locIp', locip);
+				}
+			} else {
+				// detect reverse proxy
+				let path = l.pathname;
+				let paths = path.slice(1,path.endsWith('/')?-1:undefined).split("/");
+				if (paths.length > 2) {
+					locproto = l.protocol;
+					loc = true;
+					locip = l.hostname + (l.port ? ":" + l.port : "") + "/" + paths[0];
+				}
+			}
+			if (loc) {
+				gId("bckcfg").setAttribute('href',getURL(gId("bckcfg").pathname));
+				gId("bckpresets").setAttribute('href',getURL(gId("bckpresets").pathname));
+			}
+			loadJS(getURL('/settings/s.js?p=6'), false);	// If we set async false, file is loaded and executed, then next statement is processed
+			if (loc) d.Sf.action = getURL('/settings/sec');
+		}
+		function getURL(path) {
+			return (loc ? locproto + "//" + locip : "") + path;
+		}
+	</script>
+	<style>
+		@import url("style.css");
+	</style>
+</head>
+<body onload="S()">
+	<form id="form_s" name="Sf" method="post">
+		<div class="toprow">
+		<div class="helpB"><button type="button" onclick="H()">?</button></div>
+		<button type="button" onclick="B()">Zurück</button><button type="submit">Speichern</button><hr>
+		</div>
+		<h2>Sicherheits & Update Setup</h2>
+		Einstellungs PIN: <input type="password" id="PIN" name="PIN" size="4" maxlength="4" minlength="4" onkeydown="checkNum(this)" pattern="[0-9]*" inputmode="numeric" title="Please enter a 4 digit number"><br>
+		<div class="warn">&#9888; Unencrypted Pin, Seien Sie vorsichtig bei der Auswahl der PIN, Verwenden Sie nicht Ihren Bank, SIM, etc. pin!</div><br>
+		Software Update (OTA) sperren: <input type="checkbox" name="NO"><br>
+		Passphrase: <input type="password" name="OP" maxlength="32"><br>
+		Um OTA zu aktivieren, müssen Sie aus Sicherheitsgründen auch das richtige Passwort eingeben! <br>
+Das Passwort sollte geändert werden, wenn OTA aktiviert ist.<br>
+		<b> Deaktivieren Sie OTA, wenn Sie nicht verwendet werden. Andernfalls kann ein Angreifer die Software des Geräts reflash! </b> <br>
+<i> Einstellungen auf dieser Seite sind nur veränderlich, wenn die OTA -Sperre deaktiviert ist! </i> <br>
+Verweigern Sie den Zugriff auf WLAN -Einstellungen, wenn Sie gesperrt sind: <input type="checkbox" name="OW"><br><br>
+		Auf Werkseinstellungen zurückgesetzt: <input type="checkbox" name="RS"><br>
+		Alle Einstellungen und Voreinstellungen werden gelöscht.<br><br>
+		<div class="warn">&#9888; Unencrypted Übertragung. Ein Angreifer im selben Netzwerk kann die Form von Formular abfangen!</div>
+		<hr>
+		<h3>Software Update</h3>
+		<button type="button" onclick="U()">Manual OTA Update</button><br>
+		Aktiviere ArduinoOTA: <input type="checkbox" name="AO">
+		<hr>
+		<h3>Backup & Wiederherstellen</h3>
+		<a class="btn lnk" id="bckcfg" href="/presets.json" download="presets">Backup presets</a><br>
+		<div>Stelle presets Wiederher<br><input type="file" name="data" accept=".json"> <button type="button" onclick="uploadFile(d.Sf.data,'/presets.json');">Upload</button><br></div><br>
+		<a class="btn lnk" id="bckpresets" href="/cfg.json" download="cfg">Backup configuration</a><br>
+		<div>Stelle configuration Wiederher<br><input type="file" name="data2" accept=".json"> <button type="button" onclick="uploadFile(d.Sf.data2,'/cfg.json');">Upload</button><br></div>
+		<div class="warn">&#9888; restoring presets/configuration Überschreiben Sie Ihre aktuellen presets/configuration.<br>
+		Eine falsche Konfiguration erfordert möglicherweise ein Werksreset oder eine erneute Flashing Ihres ESP. </Div>
+Aus Sicherheitsgründen werden Passwörter nicht gesichert.
+		<hr>
+		<h3>About</h3>
+		<a href="https://github.com/Aircoookie/WLED/" target="_blank">WLED</a> version ##VERSION##<!-- Autoreplaced from package.json --><br><br>
+		<a href="https://github.com/Aircoookie/WLED/wiki/Contributors-and-credits" target="_blank">Contributors, dependencies and special thanks</a><br>
+		A huge thank you to everyone who helped me create WLED!<br><br>
+		(c) 2016-2023 Christian Schwinne <br>
+		<i>Licensed under the <a href="https://github.com/Aircoookie/WLED/blob/master/LICENSE" target="_blank">MIT license</a></i><br><br>
+		Servernachricht: <span class="sip"> Error! </span><hr>
+		<div id="toast"></div>
+		<button type="button" onclick="B()">Zurück</button><button type="submit">Speichern</button>
+	</form>
+</body>
+</html>
